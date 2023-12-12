@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Vans from './pages/Vans';
 
+import "./server"
+
 /**
  * Challenge:
  * Bootstrap the VanLife project by creating the first 2 routes:
@@ -30,8 +32,8 @@ function App() {
         <nav>
           <Link className='logo' to={'/'}>#VANLIFE</Link> {/* Link is rendered into <a></a> tag */}
           <div className='menu'>
-            <Link to={'/about'}> About</Link>
-            <Link to={'/Vans'}> Vans</Link>
+            <Link to={'/about'}>About</Link>
+            <Link to={'/vans'}>Vans</Link>
           </div>
         </nav>
         <div className='content'>

@@ -29,8 +29,10 @@ nav {
 .main {
   min-width: 300px;
   max-width: 550px;
-  
+  width: 100vw;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 nav a {
   text-decoration: none;
@@ -50,7 +52,7 @@ nav a:hover {
   font-weight: 900;
 }
 .content {
-  
+  background: #FFF7ED;
 }
 .home-wrapper {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.46) 0%, rgba(0, 0, 0, 0.46) 100%), lightgray 0px -65.191px / 100% 178.109% no-repeat;
@@ -93,7 +95,6 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;  
-  background: #FFF7ED;
   padding: 26px;
 
 }
@@ -149,4 +150,93 @@ footer {
   align-items: center;
   flex-shrink: 0; 
   background: #252525; 
+}
+
+/* vans */
+.vans-wrapper {
+  padding-inline: 23px
+}
+
+.vans-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 34px;
+  margin-top: 57px;
+}
+.van-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  
+}
+.van-info > h4 > span {
+  font-size: 9px;
+}
+.van-tile a {
+  color: #161616;
+  text-decoration: none;    
+}
+
+.van-tile img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.vans-wrapper button {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.van-type {
+  height: 34px;
+  padding: 6px 26px;
+  font-style: normal;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  background-color: #FFEAD0;
+  color: #4D4D4D;
+  transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.van-type:hover {
+  color: #FFEAD0;
+}
+
+.van-type:focus {
+  outline: none;
+}
+
+.van-type.selected {
+  color: #FFEAD0;
+}
+
+.van-type.simple:hover, .van-type.simple.selected {
+  background-color: #E17654;
+}
+
+.van-type.rugged:hover, .van-type.rugged.selected {
+  background-color: #115E59;
+}
+
+.van-type.luxury:hover, .van-type.luxury.selected {
+  background-color: #161616;
+}
+
+.van-type.clear-filters {
+  margin-left: -20px;
+  height: 34px;
+  padding: 6px 26px;
+  font-style: normal;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  text-decoration: underline;
+  background-color: transparent;
+  color: #4D4D4D;
+}
+
+i[class*='van-type-'] {
+  padding: 7px 14px;
 }
