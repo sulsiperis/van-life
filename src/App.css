@@ -114,7 +114,7 @@ nav a:hover {
   font-size: 24px;
   font-weight: 700;  
 }
-.about-destination button {
+.about-destination .link-btn {
   display: inline-flex;
   padding: 12px 22px 13px 22px;
   justify-content: center;
@@ -126,8 +126,9 @@ nav a:hover {
   border: none;
   font-size: 16px;
   font-weight: 700;
+  text-decoration: none;
 }
-.about-destination button:hover {
+.about-destination .link-btn:hover {
   text-decoration: underline;
 }
 

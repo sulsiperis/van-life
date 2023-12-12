@@ -1,5 +1,6 @@
 import React from 'react'
 import background from '../img/aboutback.png'
+import { Link } from 'react-router-dom'
 
 function About() {
   return (
@@ -20,7 +21,8 @@ function About() {
         <p>Our team is full of vanlife enthusiasts who know firsthand the magic of touring the world on 4 wheels.</p>
         <div className='about-destination'>
             <h3>Your destination is waiting. Your van is ready.</h3>
-            <button>Explore our vans</button>
+            <Link to={"/vans"} className='link-btn'>Explore our vans</Link>
+           
         </div>
     </div>
     </>
