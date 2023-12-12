@@ -154,7 +154,8 @@ footer {
 
 /* vans */
 .vans-wrapper {
-  padding-inline: 23px
+  padding-inline: 23px;
+  padding-bottom: 42px;
 }
 
 .vans-list {
