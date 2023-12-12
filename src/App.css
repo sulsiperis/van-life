@@ -27,7 +27,9 @@ nav {
   padding: 36px 24px 36px 24px;
 }
 .main {
-  width: 550px;
+  min-width: 300px;
+  max-width: 550px;
+  
   height: 100%;
 }
 nav a {
@@ -48,7 +50,7 @@ nav a:hover {
   font-weight: 900;
 }
 .content {
-  width: 550px;
+  
 }
 .home-wrapper {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.46) 0%, rgba(0, 0, 0, 0.46) 100%), lightgray 0px -65.191px / 100% 178.109% no-repeat;
