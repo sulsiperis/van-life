@@ -5,18 +5,136 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background:rgb(250, 255, 229);
+
 }
 .App {
   text-align: center;
 }
-
-/* Style for Link component */
-nav > a {
+html, body, #root {
+  width: 100%;
+  height: 100%;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+nav {
+  background: #FFF7ED;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 36px 24px 36px 24px;
+}
+.main {
+  width: 550px;
+  height: 100%;
+}
+nav a {
   text-decoration: none;
-  margin: 4px;
+  color: #4D4D4D;
+  font-size: 16px;
+  font-weight: 600;  
+}
+nav a:hover {
+  text-decoration: underline;
+}
+.menu a {
+  margin-left: 24px;
+}
+.logo {
+  color: #000;
+  font-size: 24px;
+  font-weight: 900;
+}
+.content {
+  width: 550px;
+}
+.home-wrapper {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.46) 0%, rgba(0, 0, 0, 0.46) 100%), lightgray 0px -65.191px / 100% 178.109% no-repeat;
+  padding: 26px;
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.home-wrapper h2 {
+  font-size: 36px;
+  font-weight: 800;
+}
+.home-wrapper p {
+  font-size: 16px;
+  font-weight: 500;
+}
+.home-wrapper button {
+  border-radius: 5px;
+  background: #FF8C38; 
+  height: 50px;
+  border: none;
+  width: 100%;
+  color: #FFF;
+  text-align: center;  
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700; 
+  margin-top: 40px;
+}
+.home-wrapper button:hover {
+  text-decoration: underline;
+  cursor: pointer;  
+}
+.about-wrapper {
+  color: #161616;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #FFF7ED;
+  padding: 26px;
+}
+.about-wrapper h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+.about-wrapper p {
+  font-size: 16px;
+  font-weight: 500;
+}
+.about-destination {
+  border-radius: 5px;
+  background: #FFCC8D; 
+  padding: 32px 37px 32px 37px;
+}
+.about-destination h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
+.about-destination button {
+  display: inline-flex;
+  padding: 12px 22px 13px 22px;
+  justify-content: center;
+  align-items: center; 
+  border-radius: 10px;
+  background: #161616;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+}
+.about-destination button:hover {
+  text-decoration: underline;
 }
 
-nav > a:hover {
-  text-decoration: underline;
+foot h4 {
+  color: #AAA;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+foot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0; 
+  background: #252525; 
 }
