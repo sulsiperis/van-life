@@ -41,9 +41,9 @@ function App() {
             <Route path='/vans' element={<Vans />} />
           </Routes>
         </div>
-        <foot>
+        <footer>
           <h4>Ⓒ 2022 #VANLIFE</h4>
-        </foot>
+        </footer>
       </BrowserRouter>
     </div>    
   );

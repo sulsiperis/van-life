@@ -87,26 +87,32 @@ nav a:hover {
   color: #161616;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between;  
   background: #FFF7ED;
   padding: 26px;
+
 }
 .about-wrapper h2 {
   font-size: 32px;
   font-weight: 700;
+  margin:0;
+  padding-block: 12px;
 }
 .about-wrapper p {
   font-size: 16px;
   font-weight: 500;
+  margin: 0;
+  padding-block: 12px;
 }
 .about-destination {
   border-radius: 5px;
   background: #FFCC8D; 
-  padding: 32px 37px 32px 37px;
+  padding: 6px 37px 32px 37px;
+  margin-top: 44px;
 }
 .about-destination h3 {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 700;  
 }
 .about-destination button {
   display: inline-flex;
@@ -125,13 +131,13 @@ nav a:hover {
   text-decoration: underline;
 }
 
-foot h4 {
+footer h4 {
   color: #AAA;
   text-align: center;
   font-size: 14px;
   font-weight: 500;
 }
-foot {
+footer {
   display: flex;
   justify-content: center;
   align-items: center;
