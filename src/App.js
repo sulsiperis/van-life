@@ -20,13 +20,20 @@ function App() {
           <Routes>
             <Route element={<Layout />}>
               <Route path='/' element={<Home />} />
-              <Route path='/about' element={<About />} />
-              <Route path='/vans' element={<Vans />} />
-              <Route path='/vans/:id' element={<VanDetail />} /> {/* ":" means that it's a variable not a predefinet string */}
-              <Route element={<Host />}>
-                <Route path='/host' element={<Dashboard />} /> 
-                <Route path='/host/income' element={<Income />} />
-                <Route path='/host/reviews' element={<Reviews />} />
+              <Route path='about' element={<About />} />
+              {/* vanDetails could be made into relative path but its not necessary a better solution as its more code: */}
+              {/* <Route path='vans'>
+                <Route index element={<Vans />} />
+                <Route path=':id' element={<VanDetail />} />  
+              </Route> */}
+
+              <Route path='vans' element={<Vans />} />
+              <Route path='vans/:id' element={<VanDetail />} /> {/* ":" means that it's a variable not a predefinet string */}
+              
+              <Route path='host' element={<Host />}>
+                <Route index element={<Dashboard />} /> {/* Index means that its a default route for the parent element */} 
+                <Route path='income' element={<Income />} />
+                <Route path='reviews' element={<Reviews />} />
               </Route>
             </Route>
           </Routes>
