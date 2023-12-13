@@ -6,8 +6,9 @@ function Header() {
     <nav>
         <Link className='logo' to={'/'}>#VANLIFE</Link> {/* Link is rendered into <a></a> tag */}
         <div className='menu'>
-        <Link to={'/about'}>About</Link>
-        <Link to={'/vans'}>Vans</Link>
+            <Link to={'/host'}>Host</Link>
+            <Link to={'/about'}>About</Link>
+            <Link to={'/vans'}>Vans</Link>
         </div>
     </nav>
   )

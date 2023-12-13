@@ -36,7 +36,7 @@ function Vans() {
         <div className='vans-wrapper'>
             <h1>Explore our van options</h1>
             <div className='vans-list'>
-                {vans}            
+                {vans? vans:<h3>Loading...</h3>}            
             </div>           
         </div>
     )
