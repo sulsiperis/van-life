@@ -179,6 +179,10 @@ footer {
   text-decoration: none;    
 }
 
+.van-tile a:hover {
+  text-decoration: underline;    
+}
+
 .van-tile img {
   max-width: 100%;
   border-radius: 5px;
@@ -190,7 +194,6 @@ footer {
 }
 
 .van-type {
-  height: 34px;
   padding: 6px 26px;
   font-style: normal;
   font-weight: 500;
@@ -240,4 +243,66 @@ footer {
 
 i[class*='van-type-'] {
   padding: 7px 14px;
+}
+
+/* van detail */
+.van-detail-container {
+  padding: 27px;
+}
+
+.van-detail-container .back-button {
+  color: black;
+  text-decoration: none;
+}
+
+.van-detail-container .back-button:visited {
+  
+}
+
+.van-detail-container .back-button span {
+  text-decoration: underline;
+}
+
+.van-detail {
+  display: flex;
+  flex-direction: column;
+  color: #161616;
+}
+
+.van-detail img {
+  border-radius: 5px;
+  margin-block: 47px;
+}
+
+.van-detail h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.van-detail > i {
+  align-self: flex-start;
+}
+
+.van-detail .van-price {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.van-detail .van-price span {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.van-detail .link-button {
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #FF8C38;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 12px;
+}
+.van-detail  .link-button:hover {
+  text-decoration: underline;
 }

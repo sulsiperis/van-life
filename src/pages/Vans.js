@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 /**
  * Challenge: Fetch and map over the data to display it on
@@ -19,12 +20,12 @@ function Vans() {
         fetch('/api/vans').then(res => res.json()).then(d => setData(d.vans))
     }, [])
 
-    console.log(data)
+   // console.log(data)
     const vans = data?.map(van => (  
             <div key={van.id} className="van-tile">
-                <img src={van.imageUrl} />
+                <Link to={'/vans/' + van.id}><img src={van.imageUrl} /></Link>
                 <div className="van-info">
-                    <h4>{van.name}</h4>
+                <Link to={'/vans/' + van.id}><h4>{van.name}</h4></Link>
                     <h4>€{van.price}<span>/day</span></h4>
                 </div>
                 <i className={`van-type ${van.type} selected`}>{van.type}</i>
