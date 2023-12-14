@@ -16,7 +16,7 @@ function App() {
   return (
     <div className='main'>
       <BrowserRouter>        
-        <div className='content'>          
+        
           <Routes>
             <Route element={<Layout />}>
               <Route path='/' element={<Home />} />
@@ -36,11 +36,7 @@ function App() {
                 <Route path='reviews' element={<Reviews />} />
               </Route>
             </Route>
-          </Routes>
-        </div>
-        <footer>
-          <h4>Ⓒ 2022 #VANLIFE</h4>
-        </footer>
+          </Routes>        
       </BrowserRouter>
     </div>    
   );
