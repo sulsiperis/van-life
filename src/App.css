@@ -42,6 +42,10 @@ nav a {
 nav a:hover {
   text-decoration: underline;
 }
+.header-menu-active {
+  text-decoration: underline;
+  font-weight: 700;
+}
 .menu a {
   margin-left: 24px;
 }
