@@ -1,13 +1,22 @@
 import React from 'react'
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, Link, NavLink } from 'react-router-dom'
 
 function Host() {
+    const activeStyle = {
+       "font-weight": "bold",
+       "text-decoration": "underline",
+       "color": "#161616",
+    }
     return (
       <>
         <nav className='host-nav'>
-            <Link to={'/host'}>Dashboard</Link>
-            <Link to={'/host/income'}>Income</Link>
-            <Link to={'/host/reviews'}>Reviews</Link>
+            <NavLink 
+                style={({isActive}) => isActive ? activeStyle : null} 
+                to={'/host'}
+                end /* prevents from matching this route if there is more nested routes that matches */
+            >Dashboard</NavLink>
+            <NavLink style={({isActive}) => isActive ? activeStyle : null} to={'/host/income'}>Income</NavLink>
+            <NavLink style={({isActive}) => isActive ? activeStyle : null} to={'/host/reviews'}>Reviews</NavLink>
         </nav>
         <Outlet />        
       </>
