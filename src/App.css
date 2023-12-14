@@ -317,7 +317,7 @@ i[class*='van-type-'] {
   text-decoration: none;
   color: #4D4D4D;
   font-weight: 500;
-  padding: 5px 20px;
+  padding: 6px 28px 6px 0px;
 }
 
 .host-nav a:hover {
@@ -325,3 +325,56 @@ i[class*='van-type-'] {
   text-decoration: underline;
   font-weight: 600;
 }
+.host-vans-wrapper {
+  margin-inline:27px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.host-van-item {  
+  display: flex;
+  border-radius: 6px;
+  background: #FFF;
+  margin-bottom: 16px !important;
+  align-items: center;
+}
+
+.host-van-item div {
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  gap: 4px;
+}
+.host-van-item img {
+  
+  margin: 17px;
+  max-width: 66px; /* perfect solution to make dynamic image size depending n parent size */
+  max-height: 66px;
+  border-radius: 6px;    
+}
+.host-van-item h4, .host-van-item p {
+  padding: 0;
+  margin: 0;
+}
+.host-vans-wrapper * {
+  text-decoration: none; 
+  padding: 0;
+  margin: 0;
+}
+.host-vans-wrapper h1 {
+  margin-bottom: 32px;
+}
+.host-van-item h4 {
+  color: #161616;
+  font-size: 20px;
+  font-weight: 600;  
+}
+.host-van-item p {
+  color: #4D4D4D;
+  font-size: 16px;
+  font-weight: 500;
+}
+.host-van-item h4:hover, .host-van-item p:hover {
+  text-decoration: underline;
+}
+  

@@ -9,6 +9,8 @@ import Reviews from './pages/host/Reviews';
 import Income from './pages/host/Income';
 import Dashboard from './pages/host/Dashboard';
 import Host from './components/Host';
+import HostVans from './pages/host/HostVans';
+import HostVan from './pages/host/HostVan';
 
 import "./server"
 
@@ -34,6 +36,8 @@ function App() {
                 <Route index element={<Dashboard />} /> {/* Index means that its a default route for the parent element */} 
                 <Route path='income' element={<Income />} />
                 <Route path='reviews' element={<Reviews />} />
+                <Route path='vans' element={<HostVans />} />
+                <Route path='vans/:id' element={<HostVan />} />
               </Route>
             </Route>
           </Routes>        

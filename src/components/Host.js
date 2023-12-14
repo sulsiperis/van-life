@@ -1,11 +1,11 @@
 import React from 'react'
-import { Outlet, Link, NavLink } from 'react-router-dom'
+import { Outlet, NavLink } from 'react-router-dom'
 
 function Host() {
     const activeStyle = {
-       "font-weight": "bold",
-       "text-decoration": "underline",
-       "color": "#161616",
+       fontWeight: "bold",
+       textDecoration: "underline",
+       color: "#161616",
     }
     return (
       <>
@@ -16,6 +16,7 @@ function Host() {
                 end /* prevents from matching this route if there is more nested routes that matches */
             >Dashboard</NavLink>
             <NavLink style={({isActive}) => isActive ? activeStyle : null} to={'/host/income'}>Income</NavLink>
+            <NavLink style={({isActive}) => isActive ? activeStyle : null} to={'/host/vans'}>Vans</NavLink>
             <NavLink style={({isActive}) => isActive ? activeStyle : null} to={'/host/reviews'}>Reviews</NavLink>
         </nav>
         <Outlet />        
