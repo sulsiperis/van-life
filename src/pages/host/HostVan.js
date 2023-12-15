@@ -11,9 +11,9 @@ function HostVan() {
    
   return (
     <div className='host-van-detail-wrapper'>
-        <Link className='host-van-detail-back' to={'/host/vans'}>{'<< Back to all vans'}</Link>
+        <Link className='host-van-detail-back' to={'..'}>{'<< Back to all vans'}</Link>
         {vanData?
-        <>
+        <div className='host-van-detail-block'>
             <div className='host-van-detail'>
                 <img src={vanData.imageUrl} />
                 <div className='host-van-detail-info-text'>
@@ -27,7 +27,7 @@ function HostVan() {
                 <NavLink>Pricing</NavLink>
                 <NavLink>Photos</NavLink>
             </div>
-        </>
+        </div>
         : 'Loading...'}
     </div>
   )

@@ -47,7 +47,7 @@ nav a:hover {
   font-weight: 700;
 }
 .menu a {
-  margin-left: 24px;
+  margin-left: clamp(6px, 4vw, 24px);
 }
 .logo {
   color: #000;
@@ -317,7 +317,8 @@ i[class*='van-type-'] {
   text-decoration: none;
   color: #4D4D4D;
   font-weight: 500;
-  padding: 6px 28px 6px 0px;
+  padding-block: 6px;
+  padding-right: clamp(6px, 4vw, 28px);
 }
 
 .host-nav a:hover {
@@ -382,12 +383,14 @@ i[class*='van-type-'] {
   padding: 24px;
 }
 
-.host-van-detail {
+.host-van-detail-block {
   padding: 24px;
   background-color: white;
-  border-top-right-radius: 6px;
-  border-top-left-radius: 6px;
-  display: flex;
+  border-radius: 6px;
+
+}
+.host-van-detail {
+  display: inline-block;
   align-items: center;
 }
 
@@ -396,17 +399,24 @@ i[class*='van-type-'] {
   max-height: 160px;
   border-radius: 6px;
   margin-right: 20px;
+  float: left;
 }
-
+.host-van-detail-info-text {
+  float: left;
+}
+.host-van-detail-info-text i {
+  margin-top: 20px;
+  display: inline-flex;
+}
 .host-van-detail-info-text > h4 {
   margin-top: 24px;
   margin-bottom: 5px;
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 700;
 }
 
 .host-van-detail-info-text > p {
-  font-size: 20px;
+  font-size: 16px;
   margin-block: 0;
 }
 a.host-van-detail-back {
@@ -425,7 +435,7 @@ a.host-van-detail-back:hover {
   display: flex;
   flex-direction: row;
   gap: 27px;
-  padding-left: 24px;
+  padding-top: 20px;
 }
 .host-van-detail-nav a {
   color: #4D4D4D;
