@@ -1,13 +1,33 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link, NavLink } from 'react-router-dom'
 
 function HostVan() {
     const params = useParams()
+    const [vanData, setVanData] = React.useState()
+
+    React.useEffect(() => {
+        fetch(`/api/host/vans/${params.id}`).then(res => res.json()).then(d => setVanData(d.vans[0]))
+    }, [])
+    console.log(vanData)
   return (
-    <>
-        <div>HostVan</div>
-        van id: {params.id}
-    </>
+    <div className='host-van-detail-wrapper'>
+        <Link to={'/host/vans'}>{'<< Back to all vans'}</Link>
+        {vanData?
+            <div className='host-van-detail'>
+                <img src={vanData.imageUrl} />
+                <div>
+                    <i className={`van-type ${vanData.type} selected`}>{vanData.type}</i>
+                    <h4>{vanData.name}</h4>
+                    <p>€{vanData.price}/day</p>
+                </div>
+                <div className='host-van-detail-nav'>
+                    <NavLink>Details</NavLink>
+                    <NavLink>Pricing</NavLink>
+                    <NavLink>Photos</NavLink>
+                </div>
+            </div>        
+        : 'Loading...'}
+    </div>
   )
 }
 

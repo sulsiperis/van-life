@@ -377,4 +377,9 @@ i[class*='van-type-'] {
 .host-van-item h4:hover, .host-van-item p:hover {
   text-decoration: underline;
 }
-  
+/****** Host van detail ******/
+.host-van-detail img {
+  max-width: 160px;
+  max-height: 160px;
+  border-radius: 6px;
+}
