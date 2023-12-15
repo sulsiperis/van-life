@@ -31,7 +31,13 @@ function HostVan() {
                 <NavLink className={({isActive}) => isActive ? 'host-van-detail-menu-active' : null} to='pricing'>Pricing</NavLink>
                 <NavLink className={({isActive}) => isActive ? 'host-van-detail-menu-active' : null} to='photos'>Photos</NavLink>
             </div>
-            <Outlet />
+            <Outlet context={[vanData, setVanData]} />
+            {/* could be also:
+            <Outlet context={ vanData } />
+            or
+            <Outlet context={{ vanData }} />
+            in this case childs should destructure:
+            { vanData } = useOutletContext() */}
         </div>
         : 'Loading...'}
     </div>
