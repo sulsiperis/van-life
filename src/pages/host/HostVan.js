@@ -11,21 +11,23 @@ function HostVan() {
     console.log(vanData)
   return (
     <div className='host-van-detail-wrapper'>
-        <Link to={'/host/vans'}>{'<< Back to all vans'}</Link>
+        <Link className='host-van-detail-back' to={'/host/vans'}>{'<< Back to all vans'}</Link>
         {vanData?
+        <>
             <div className='host-van-detail'>
                 <img src={vanData.imageUrl} />
-                <div>
+                <div className='host-van-detail-info-text'>
                     <i className={`van-type ${vanData.type} selected`}>{vanData.type}</i>
                     <h4>{vanData.name}</h4>
                     <p>€{vanData.price}/day</p>
                 </div>
-                <div className='host-van-detail-nav'>
-                    <NavLink>Details</NavLink>
-                    <NavLink>Pricing</NavLink>
-                    <NavLink>Photos</NavLink>
-                </div>
             </div>        
+            <div className='host-van-detail-nav'>
+                <NavLink>Details</NavLink>
+                <NavLink>Pricing</NavLink>
+                <NavLink>Photos</NavLink>
+            </div>
+        </>
         : 'Loading...'}
     </div>
   )

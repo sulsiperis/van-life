@@ -12,12 +12,12 @@ function Host() {
         <nav className='host-nav'>
             <NavLink 
                 style={({isActive}) => isActive ? activeStyle : null} 
-                to={'/host'}
+                to={'.'} //relative link mening current path
                 end /* prevents from matching this route if there is more nested routes that matches */
             >Dashboard</NavLink>
-            <NavLink style={({isActive}) => isActive ? activeStyle : null} to={'/host/income'}>Income</NavLink>
-            <NavLink style={({isActive}) => isActive ? activeStyle : null} to={'/host/vans'}>Vans</NavLink>
-            <NavLink style={({isActive}) => isActive ? activeStyle : null} to={'/host/reviews'}>Reviews</NavLink>
+            <NavLink style={({isActive}) => isActive ? activeStyle : null} to={'income'}>Income</NavLink>
+            <NavLink style={({isActive}) => isActive ? activeStyle : null} to={'vans'}>Vans</NavLink>
+            <NavLink style={({isActive}) => isActive ? activeStyle : null} to={'reviews'}>Reviews</NavLink>
         </nav>
         <Outlet />        
       </>

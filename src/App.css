@@ -378,8 +378,62 @@ i[class*='van-type-'] {
   text-decoration: underline;
 }
 /****** Host van detail ******/
-.host-van-detail img {
+.host-van-detail-wrapper {
+  padding: 24px;
+}
+
+.host-van-detail {
+  padding: 24px;
+  background-color: white;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.host-van-detail > img {
   max-width: 160px;
   max-height: 160px;
   border-radius: 6px;
+  margin-right: 20px;
+}
+
+.host-van-detail-info-text > h4 {
+  margin-top: 24px;
+  margin-bottom: 5px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.host-van-detail-info-text > p {
+  font-size: 20px;
+  margin-block: 0;
+}
+a.host-van-detail-back {
+  color: #201F1D;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration-line: underline; 
+  margin-bottom: 37px;
+  display: block;
+}
+a.host-van-detail-back:hover {
+  font-weight: 700;
+}
+.host-van-detail-nav {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  gap: 27px;
+  padding-left: 24px;
+}
+.host-van-detail-nav a {
+  color: #4D4D4D;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none; 
+}
+.host-van-detail-nav a:hover {
+  font-weight: 700;
+  text-decoration: underline; 
 }
