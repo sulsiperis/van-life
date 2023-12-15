@@ -8,7 +8,7 @@ function HostVan() {
     React.useEffect(() => {
         fetch(`/api/host/vans/${params.id}`).then(res => res.json()).then(d => setVanData(d.vans[0]))
     }, [])
-    console.log(vanData)
+   
   return (
     <div className='host-van-detail-wrapper'>
         <Link className='host-van-detail-back' to={'/host/vans'}>{'<< Back to all vans'}</Link>
