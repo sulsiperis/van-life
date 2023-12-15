@@ -12,8 +12,8 @@ function Host() {
         <nav className='host-nav'>
             <NavLink 
                 style={({isActive}) => isActive ? activeStyle : null} 
-                to={'.'} //relative link mening current path
-                end /* prevents from matching this route if there is more nested routes that matches */
+                to={'.'} //relative link meaning current path
+                end /* prevents from matching this route if there is more nested routes that matches. In this case we use it because dashboard is index route. */
             >Dashboard</NavLink>
             <NavLink style={({isActive}) => isActive ? activeStyle : null} to={'income'}>Income</NavLink>
             <NavLink style={({isActive}) => isActive ? activeStyle : null} to={'vans'}>Vans</NavLink>

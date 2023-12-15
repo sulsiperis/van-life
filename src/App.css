@@ -423,12 +423,12 @@ a.host-van-detail-back {
   color: #201F1D;
   font-size: 16px;
   font-weight: 500;
-  text-decoration-line: underline; 
+  text-decoration: none; 
   margin-bottom: 37px;
   display: block;
 }
-a.host-van-detail-back:hover {
-  font-weight: 700;
+a.host-van-detail-back span:hover {
+   text-decoration: underline;
 }
 .host-van-detail-nav {
   background-color: white;
@@ -446,4 +446,10 @@ a.host-van-detail-back:hover {
 .host-van-detail-nav a:hover {
   font-weight: 700;
   text-decoration: underline; 
+}
+a.host-van-detail-menu-active {
+  color: #161616;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: underline;
 }
