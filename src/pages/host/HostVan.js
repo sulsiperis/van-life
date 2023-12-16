@@ -21,7 +21,7 @@ function HostVan() {
             <div className='host-van-detail'>
                 <img src={vanData.imageUrl} />
                 <div className='host-van-detail-info-text'>
-                    <i className={`van-type van-type-${vanData.type}`}>{vanData.type}</i>
+                    <i className={`van-type ${vanData.type} selected`}>{vanData.type}</i>
                     <h4>{vanData.name}</h4>
                     <p>€{vanData.price}/day</p>
                 </div>

@@ -28,12 +28,24 @@ function Vans() {
             </div>          
         )
     )
+    //function to append query key instead of overwriting
+    function genNewSearchParamString(key, value) { 
+        const sp = new URLSearchParams(searchParams)
+        if (value === null) {
+            sp.delete(key)
+        } else {
+            sp.set(key, value)
+        }
+        return `?${sp.toString()}`
+    }
     return (
         <div className='vans-wrapper'>
             <h1>Explore our van options</h1>
             <div className="van-list-filter-buttons">
-                <Link className='van-type simple' to='?type=simple'>Simple</Link>
-                <Link className='van-type ruged' to='?type=rugged'>Rugged</Link>
+                {/* queries also can be made with setSearchParams: */}
+                {/* <button onClick={() => setSearchParams({type: "rugged"})}>Rugged</button> */}
+                <Link className='van-type simple' to={genNewSearchParamString("type", "simple")}>Simple</Link>
+                <Link className='van-type rugged' to='?type=rugged'>Rugged</Link>
                 <Link className='van-type luxury' to='?type=luxury'>Luxury</Link>
                 <Link className='van-type clear-filters' to='.'>clear filters</Link>
             </div>
