@@ -158,7 +158,19 @@ footer {
   padding-inline: 23px;
   padding-bottom: 42px;
 }
+/* van filters */
+.van-list-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.van-list-filter-buttons > a {
+  margin-right: 14px;
+  margin-bottom: 8px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+}
 .vans-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -195,6 +207,7 @@ footer {
 }
 
 .van-type {
+  height: 34px;
   padding: 6px 26px;
   font-style: normal;
   font-weight: 500;
