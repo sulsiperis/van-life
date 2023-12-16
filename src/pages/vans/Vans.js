@@ -38,6 +38,16 @@ function Vans() {
         }
         return `?${sp.toString()}`
     }
+    function handleFilterChange(key, value) {
+        setSearchParams(prevParams => {
+          if (value === null) {
+            prevParams.delete(key)
+          } else {
+            prevParams.set(key, value)
+          }
+          return prevParams
+        })
+    }
     return (
         <div className='vans-wrapper'>
             <h1>Explore our van options</h1>
@@ -48,6 +58,7 @@ function Vans() {
                 <Link className='van-type rugged' to='?type=rugged'>Rugged</Link>
                 <Link className='van-type luxury' to='?type=luxury'>Luxury</Link>
                 <Link className='van-type clear-filters' to='.'>clear filters</Link>
+                {/* <button onClick={() => handleFilterChange("type", null)}>clear</button> */}
             </div>
             <div className='vans-list'>
                 {vans? vans:<h3>Loading...</h3>}            
