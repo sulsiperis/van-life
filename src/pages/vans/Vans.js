@@ -14,7 +14,7 @@ function Vans() {
         fetch('/api/vans').then(res => res.json()).then(d => setData(d.vans))
     }, [])
 
-    const filtered = typeFilter ? data.filter(van => van.type === typeFilter) : data
+    const filtered = typeFilter ? data?.filter(van => van.type === typeFilter) : data
 
    // console.log(data)
     const vans = filtered?.map(van => (  
