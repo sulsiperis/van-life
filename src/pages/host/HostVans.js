@@ -9,7 +9,7 @@ function HostVans() {
     }, [])
 
     const vanList = vans? vans.map(van => (
-        <Link key={van.id} to={'/host/vans/' + van.id}>
+        <Link key={van.id} to={van.id}>
             <div className='host-van-item'>
                 <img src={van.imageUrl} />
                 <div>
