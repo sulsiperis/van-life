@@ -1,22 +1,37 @@
 import React from 'react'
 import { Link, useSearchParams } from 'react-router-dom';
-
+import getVans from '../../api';
 
 
 function Vans() {   
     const [searchParams, setSearchParams] = useSearchParams()
     
     const [data, setData] = React.useState()
+    const [loading, setLoading] = React.useState(false)
+    const [error, setError] = React.useState(null)
 
     const typeFilter = searchParams.get('type')
 
     React.useEffect(() => {
-        fetch('/api/vans').then(res => res.json()).then(d => setData(d.vans))
+        async function loadVans() {
+            setLoading(true)
+            try {
+                const d = await getVans()
+                setData(d)
+            } catch(err) {
+                setError(err)
+            } finally {
+                setLoading(false)
+            }
+        } 
+        loadVans()
+        //fetch('/api/vans').then(res => res.json()).then(d => setData(d.vans))
     }, [])
 
     const filtered = typeFilter ? data?.filter(van => van.type === typeFilter) : data
 
    // console.log(data)
+
     const vans = filtered?.map(van => (  
             <div key={van.id} className="van-tile">
                 {/* using state in link is a way to transfer info to the linked route without showing in url. In this case query strings */}
@@ -49,6 +64,10 @@ function Vans() {
           return prevParams
         })
     }
+    //console.log(error)
+
+    if (loading) return (<h3>Loading...</h3>) //show loading... before data fetched from server
+    if (error) return (<h3>Error: {error.message}</h3>) //return server error
     return (
         <div className='vans-wrapper'>
             <h1>Explore our van options</h1>
@@ -62,7 +81,7 @@ function Vans() {
                 {/* <button onClick={() => handleFilterChange("type", null)}>clear</button> */}
             </div>
             <div className='vans-list'>
-                {vans? vans:<h3>Loading...</h3>}            
+                {vans}            
             </div>           
         </div>
     )
