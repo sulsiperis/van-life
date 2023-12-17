@@ -7,19 +7,21 @@ function VanDetail() {
   const params = useParams()
   const location = useLocation()
 
-  const backUrl = location.state.search!==''? '..?' + location.state.search : '..'
+  const backUrl = location.state?.search!==''? '..?' + location.state?.search : '..'
+  const filter = location.state?.filter
   React.useEffect(() => {
     fetch('/api/vans/' + params.id).then(res => res.json()).then(v => setVan(v))
   }, [params.id])
 
-  console.log(location)
+  //console.log(location.state)
+
   return (
     <div className="van-detail-container">
         <Link 
             className='host-van-detail-back' 
             to={backUrl}
             relative='path' /* means that link will be relative to path and not the route system */
-        >&larr; <span>Back to all vans</span></Link>
+        >&larr; <span>Back to {filter !== 'null' ? filter : 'all'} vans</span></Link>
         {van ? (
             <div className="van-detail">
                 <img src={van.vans.imageUrl} />

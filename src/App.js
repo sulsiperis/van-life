@@ -14,6 +14,7 @@ import HostVan from './pages/host/HostVan';
 import HostVanInfo from './pages/host/HostVanInfo';
 import HostVanPhotos from './pages/host/HostVanPhotos';
 import HostVanPricing from './pages/host/HostVanPricing';
+import NotFound from './pages/NotFound';
 
 import "./server"
 
@@ -24,6 +25,7 @@ function App() {
         
           <Routes>
             <Route element={<Layout />}>
+              <Route path='*' element={<NotFound /> } /> //catch all route for not found pages
               <Route path='/' element={<Home />} />
               <Route path='about' element={<About />} />
               {/* vanDetails could be made into relative path but its not necessary a better solution as its more code: */}
