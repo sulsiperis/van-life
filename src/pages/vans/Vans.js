@@ -1,36 +1,24 @@
 import React from 'react'
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useLoaderData, useSearchParams } from 'react-router-dom';
 import getVans from '../../api';
 
+export function loader() {
+    return (
+        getVans()
+    )
+}
 
 function Vans() {   
     const [searchParams, setSearchParams] = useSearchParams()
-    
-    const [data, setData] = React.useState()
-    const [loading, setLoading] = React.useState(false)
+    const data = useLoaderData()
+
     const [error, setError] = React.useState(null)
-
+    
     const typeFilter = searchParams.get('type')
+    
 
-    React.useEffect(() => {
-        async function loadVans() {
-            setLoading(true)
-            try {
-                const d = await getVans()
-                setData(d)
-            } catch(err) {
-                setError(err)
-            } finally {
-                setLoading(false)
-            }
-        } 
-        loadVans()
-        //fetch('/api/vans').then(res => res.json()).then(d => setData(d.vans))
-    }, [])
 
     const filtered = typeFilter ? data?.filter(van => van.type === typeFilter) : data
-
-   // console.log(data)
 
     const vans = filtered?.map(van => (  
             <div key={van.id} className="van-tile">
@@ -64,9 +52,7 @@ function Vans() {
           return prevParams
         })
     }
-    //console.log(error)
 
-    if (loading) return (<h3>Loading...</h3>) //show loading... before data fetched from server
     if (error) return (<h3>Error: {error.message}</h3>) //return server error
     return (
         <div className='vans-wrapper'>

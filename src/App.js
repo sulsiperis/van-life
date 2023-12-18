@@ -2,7 +2,7 @@ import './App.css';
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
-import Vans from './pages/vans/Vans';
+import Vans, { loader as vansLoader } from './pages/vans/Vans';
 import VanDetail from './pages/vans/VanDetail';
 import Layout from './components/Layout';
 import Reviews from './pages/host/Reviews';
@@ -23,7 +23,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='*' element={<NotFound /> } /> //catch all route for not found pages
     <Route path='/' element={<Home />} />
     <Route path='about' element={<About />} />
-    <Route path='vans' element={<Vans />} />
+    <Route path='vans' element={<Vans />} loader={vansLoader} /> {/* loader delays element rendering until loader is finnished */}
     <Route path='vans/:id' element={<VanDetail />} /> {/* ":" means that it's a variable not a predefinet string */}
     <Route path='host' element={<Host />}>
       <Route index element={<Dashboard />} /> {/* Index means that its a default route for the parent element */} 
