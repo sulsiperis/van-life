@@ -509,3 +509,8 @@ a.host-van-detail-menu-active {
 .not-found-homelink:hover {
   text-decoration: underline;
 }
+
+/* error page */
+.error-wrapper, .dashboard-wrapper, .income-wrapper , .reviews-wrapper {
+  padding: 24px;
+}

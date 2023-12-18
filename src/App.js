@@ -15,6 +15,7 @@ import HostVanInfo from './pages/host/HostVanInfo';
 import HostVanPhotos from './pages/host/HostVanPhotos';
 import HostVanPricing from './pages/host/HostVanPricing';
 import NotFound from './pages/NotFound';
+import Error from './components/Error';
 
 import "./server"
 
@@ -23,7 +24,12 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='*' element={<NotFound /> } /> //catch all route for not found pages
     <Route path='/' element={<Home />} />
     <Route path='about' element={<About />} />
-    <Route path='vans' element={<Vans />} loader={vansLoader} /> {/* loader delays element rendering until loader is finnished */}
+    <Route 
+      path='vans' 
+      element={<Vans />} 
+      loader={vansLoader} // loader delays element rendering until loader is finnished
+      errorElement={<Error />} //error element for automatic error handling
+    /> 
     <Route path='vans/:id' element={<VanDetail />} /> {/* ":" means that it's a variable not a predefinet string */}
     <Route path='host' element={<Host />}>
       <Route index element={<Dashboard />} /> {/* Index means that its a default route for the parent element */} 

@@ -2,7 +2,7 @@ import React from 'react'
 
 function Income() {
   return (
-    <div>Income</div>
+    <div className='income-wrapper'>Income</div>
   )
 }
 
