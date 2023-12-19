@@ -17,6 +17,7 @@ import HostVanPricing from './pages/host/HostVanPricing';
 import NotFound from './pages/NotFound';
 import Error from './components/Error';
 import Login from './pages/Login';
+import { requireAuth } from './utils';
 
 import "./server"
 
@@ -34,26 +35,14 @@ const router = createBrowserRouter(createRoutesFromElements(
     /> 
     <Route path='vans/:id' element={<VanDetail />} loader={vanDetailLoader} /> {/* ":" means that it's a variable not a predefinet string */}
     <Route path='host' element={<Host />} >
-      <Route index element={<Dashboard />} loader={async () => {
-        return null
-      }} /> {/* Index means that its a default route for the parent element */} 
-      <Route path='income' element={<Income />} loader={async () => {
-        return null
-      }} />
-      <Route path='reviews' element={<Reviews />} loader={async () => {
-        return null
-      }} />
+      <Route index element={<Dashboard />} loader={async () => await requireAuth()} /> {/* Index means that its a default route for the parent element */} 
+      <Route path='income' element={<Income />} loader={ async () => await requireAuth() } />
+      <Route path='reviews' element={<Reviews />} loader={ async () => await requireAuth() } />
       <Route path='vans' element={<HostVans />} loader={hostVansLoader} />
       <Route path='vans/:id' element={<HostVan />} loader={hostVanDetailLoader} >
-        <Route index element={<HostVanInfo />} loader={async () => {
-          return null
-        }} />
-        <Route path='photos' element={<HostVanPhotos />} loader={async () => {
-          return null
-        }} />
-        <Route path='pricing' element={<HostVanPricing />} loader={() => {
-          return null
-        }} />
+        <Route index element={<HostVanInfo />} loader={async () => await requireAuth() } />
+        <Route path='photos' element={<HostVanPhotos />} loader={async () => await requireAuth() } />
+        <Route path='pricing' element={<HostVanPricing />} loader={async () => await requireAuth() } />
       </Route>
     </Route>
   </Route>
