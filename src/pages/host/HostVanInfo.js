@@ -1,8 +1,9 @@
+//host van detail page
 import React from 'react'
 import { useOutletContext } from 'react-router-dom'
 
 function HostVanInfo() {
-    const [vanData, setVanData] = useOutletContext()
+    const { vanData } = useOutletContext()
   return (
     <div className='host-van-detail-info'>
         <p><span>Name: </span>{vanData.name}</p>

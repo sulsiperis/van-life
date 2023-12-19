@@ -1,14 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
+import { getHostVans } from '../../api'
+
+export function loader() {
+    return getHostVans()
+}
 
 function HostVans() {
-    const [vans, setVans] = React.useState()
-
-    React.useEffect(() => {
-        fetch('/api/host/vans').then(res => res.json()).then(data => setVans(data.vans))
-    }, [])
-
-    const vanList = vans? vans.map(van => (
+    const vans = useLoaderData()
+    const vanList = vans.map(van => (
         <Link key={van.id} to={van.id}>
             <div className='host-van-item'>
                 <img src={van.imageUrl} />
@@ -18,7 +18,7 @@ function HostVans() {
                 </div>
             </div>
         </Link>
-    )) : "Loading..."
+    ))
     
 
   return (

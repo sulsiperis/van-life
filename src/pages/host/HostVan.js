@@ -1,13 +1,14 @@
+//host 
 import React from 'react'
-import { useParams, Link, NavLink, Outlet } from 'react-router-dom'
+import { useParams, Link, NavLink, Outlet, useLoaderData } from 'react-router-dom'
+import { getHostVans } from '../../api'
+
+export function loader({ params }) {
+    return getHostVans(params.id)
+}
 
 function HostVan() {
-    const params = useParams()
-    const [vanData, setVanData] = React.useState()
-
-    React.useEffect(() => {
-        fetch(`/api/host/vans/${params.id}`).then(res => res.json()).then(d => setVanData(d.vans[0]))
-    }, [])
+    const vanData = useLoaderData()[0]
    
   return (
     <div className='host-van-detail-wrapper'>
@@ -16,7 +17,6 @@ function HostVan() {
             to={'..'}
             relative='path' /* means that link will be relative to path and not the route system */
         >&larr; <span>Back to all vans</span></Link>
-        {vanData?
         <div className='host-van-detail-block'>
             <div className='host-van-detail'>
                 <img src={vanData.imageUrl} />
@@ -31,7 +31,7 @@ function HostVan() {
                 <NavLink className={({isActive}) => isActive ? 'host-van-detail-menu-active' : null} to='pricing'>Pricing</NavLink>
                 <NavLink className={({isActive}) => isActive ? 'host-van-detail-menu-active' : null} to='photos'>Photos</NavLink>
             </div>
-            <Outlet context={[vanData, setVanData]} />
+            <Outlet context={{ vanData }} />
             {/* could be also:
             <Outlet context={ vanData } />
             or
@@ -39,7 +39,6 @@ function HostVan() {
             in this case childs should destructure:
             { vanData } = useOutletContext() */}
         </div>
-        : 'Loading...'}
     </div>
   )
 }
