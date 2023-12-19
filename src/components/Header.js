@@ -17,6 +17,9 @@ function Header() {
             >Host</NavLink>
             <NavLink className={({isActive}) => isActive ? 'header-menu-active' : ''} to={'/about'}>About</NavLink>
             <NavLink className={({isActive}) => isActive ? 'header-menu-active' : ''} to={'/vans'}>Vans</NavLink>
+            <Link to="login" className="login-link">
+                <img src={`${require("../img/avatar-icon.png")}`} className="login-icon" />
+            </Link>
         </div>
     </nav>
   )

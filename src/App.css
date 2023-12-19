@@ -46,8 +46,23 @@ nav a:hover {
   text-decoration: underline;
   font-weight: 700;
 }
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu .login-icon {
+  height: 18px;
+  width: 18px;
+}
+.login-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .menu a {
-  margin-left: clamp(6px, 4vw, 24px);
+  margin-left: clamp(2px, 2vw, 24px);
 }
 .logo {
   color: #000;
@@ -510,7 +525,57 @@ a.host-van-detail-menu-active {
   text-decoration: underline;
 }
 
-/* error page */
 .error-wrapper, .dashboard-wrapper, .income-wrapper , .reviews-wrapper {
   padding: 24px;
+}
+
+/* Login page */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 27px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;    
+}
+
+.login-form > input {
+  border: 1px solid rgba(209, 213, 219);
+  height: 40px;
+  text-indent: 10px;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  font-weight: 400;
+}
+
+.login-form > input:focus {
+  outline: none;
+}
+
+.login-form > input:first-of-type {
+  border-radius: 6px 6px 0px 0px;
+}
+
+.login-form > input:last-of-type {
+  border-radius: 0px 0px 6px 6px;
+  border-top: none;
+}
+
+.login-form > button {
+  background-color: #FF8C38;
+  border: none;
+  border-radius: 6px;
+  height: 55px;
+  margin-top: 22px;
+  color: white;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+}
+.login-form > button:hover {
+  text-decoration: underline;
 }
