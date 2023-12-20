@@ -1,5 +1,5 @@
 import React from "react"
-import { useSearchParams, useLoaderData } from "react-router-dom"
+import { useSearchParams, useLoaderData, useNavigate } from "react-router-dom"
 import { loginUser } from "../api"
 
 //hard way to get message from authRequired using loader
@@ -20,6 +20,8 @@ export default function Login() {
     const [status, setStatus] = React.useState("idle")
     const [error, setError] = React.useState(null)
 
+    const navigate = useNavigate()
+
     function handleSubmit(e) {
         e.preventDefault()
         setError(null)
@@ -27,18 +29,15 @@ export default function Login() {
         loginUser(loginFormData)
             .then(data => {
                 console.log(data)
-
+                //setLoginFormData({ email: "", password: "" })
+                navigate('/host', { replace: true }) //replace: true means history replacing with previous route, not the login
             })
             .catch(err => {
-                setError(err.message)
-                
+                setError(err.message)                
             })
             .finally(() => setStatus("idle"))
-            
-            
-        
     }
-    console.log(error)
+    //console.log(error)
 
     function handleChange(e) {
         const { name, value } = e.target
