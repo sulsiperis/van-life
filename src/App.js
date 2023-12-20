@@ -16,14 +16,14 @@ import HostVanPhotos from './pages/host/HostVanPhotos';
 import HostVanPricing from './pages/host/HostVanPricing';
 import NotFound from './pages/NotFound';
 import Error from './components/Error';
-import Login from './pages/Login';
+import Login, {loader as loginLoader} from './pages/Login';
 import { requireAuth } from './utils';
 
 import "./server"
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route element={<Layout />}>
-    <Route path='login' element={<Login />} />
+    <Route path='login' element={<Login />} loader={loginLoader} />
     <Route path='*' element={<NotFound /> } /> {/* catch all route for not found pages */}
     <Route path='/' element={<Home />} />
     <Route path='about' element={<About />} />

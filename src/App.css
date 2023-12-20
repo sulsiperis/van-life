@@ -578,3 +578,6 @@ a.host-van-detail-menu-active {
 .login-form > button:hover {
   text-decoration: underline;
 }
+.login-container .red {
+  color: #E17654;
+}
