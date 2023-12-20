@@ -569,14 +569,25 @@ a.host-van-detail-menu-active {
   background-color: #FF8C38;
   border: none;
   border-radius: 6px;
-  height: 55px;
+  height: 54px;
   margin-top: 22px;
   color: white;
-  font-family: "Inter", sans-serif;
   cursor: pointer;
+  font-size: 18px;
 }
 .login-form > button:hover {
   text-decoration: underline;
+}
+.login-form > button:active {  
+  margin-top: 24px;
+  margin-left: 2px;
+}
+.login-form > button:disabled {  
+  margin-top: 24px;
+  margin-left: 2px;
+  cursor: not-allowed;
+  text-decoration: none;
+  color: #d4cfcf;
 }
 .login-container .red {
   color: #E17654;

@@ -1,5 +1,6 @@
 import React from "react"
 import { useSearchParams, useLoaderData } from "react-router-dom"
+import { loginUser } from "../api"
 
 //hard way to get message from authRequired using loader
 export function loader({ request }) {
@@ -16,11 +17,28 @@ export default function Login() {
     const msg = useLoaderData()
     //--------
     const [loginFormData, setLoginFormData] = React.useState({ email: "", password: "" })
+    const [status, setStatus] = React.useState("idle")
+    const [error, setError] = React.useState(null)
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(loginFormData)
+        setError(null)
+        setStatus("submitting")
+        loginUser(loginFormData)
+            .then(data => {
+                console.log(data)
+
+            })
+            .catch(err => {
+                setError(err.message)
+                
+            })
+            .finally(() => setStatus("idle"))
+            
+            
+        
     }
+    console.log(error)
 
     function handleChange(e) {
         const { name, value } = e.target
@@ -34,6 +52,7 @@ export default function Login() {
         <div className="login-container">
             <h1>Sign in to your account</h1>
             {msg && <h3 className="red">{msg}</h3>}
+            {error && <h3 className="red">{error}</h3>}
             <form onSubmit={handleSubmit} className="login-form">
                 <input
                     name="email"
@@ -49,7 +68,9 @@ export default function Login() {
                     placeholder="Password"
                     value={loginFormData.password}
                 />
-                <button type="submit">Log in</button>
+                <button type="submit" disabled={status==="idle"?false:true}>
+                    {status === 'submitting'?'Logging in...':'Log in'}
+                </button>
             </form>
         </div>
     )
