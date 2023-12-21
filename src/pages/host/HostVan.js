@@ -2,14 +2,16 @@
 import React from 'react'
 import { Link, NavLink, Outlet, useLoaderData } from 'react-router-dom'
 import { getHostVans } from '../../api'
+import { requireAuth } from '../../utils'
 
-export function loader({ params }) {
+export async function loader({ params, request }) {
+    await requireAuth(request)
     return getHostVans(params.id)
     
 }
 
 function HostVan() {
-    const vanData = useLoaderData()[0]
+    const vanData = useLoaderData()
    
   return (
     <div className='host-van-detail-wrapper'>

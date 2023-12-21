@@ -6,7 +6,8 @@ import {
     Form, //react router form
     redirect, //for redirecting in non visual components
     useActionData, //for retrievin errors
-    useNavigation //for retrieving the state of the route loader (work only w/ data loader router)
+    useNavigation, //for retrieving the state of the route loader (work only w/ data loader router)
+    json
 } from "react-router-dom"
 import { loginUser } from "../api"
 
@@ -18,12 +19,17 @@ export function loader({ request }) {
 export async function action(obj) {
     //obj has two objects: action and params. Params is an object from get method path
     const formData = await obj.request.formData()
+    //if redirectTo is undefined, returnPath will be "/host"
+    const returnPath = new URL(obj.request.url).searchParams.get('redirectTo') || "/host" 
+    
     const email = formData.get("email")
     const password = formData.get("password")
     try {
         const data = await loginUser({email, password})
         localStorage.setItem('loggedin', true)
-        return redirect("/host")
+        localStorage.setItem('userData', JSON.stringify(data))
+        
+        return redirect(returnPath)
 
     } catch(err) {
         return err.message
@@ -44,13 +50,16 @@ export default function Login() {
     const errorMessage = useActionData()
     const navigation = useNavigation() //for retrieving state of the route i.e. "loading", "idle", "submitting"
     
+    
+
     return (
         <div className="login-container">
-            {localStorage.getItem("loggedin") && <button onClick={() => {localStorage.clear(); navigate("/")}}>Logout</button>}
-            <h1>Sign in to your account</h1>
+            {localStorage.getItem("loggedin") && <h2>Hello, {JSON.parse(localStorage.getItem('userData')).user.name}</h2>}
+            {localStorage.getItem("loggedin") && <button className="logout-btn" onClick={() => {localStorage.clear(); navigate("/")}}>Logout</button>}
+            {!localStorage.getItem("loggedin") && <h1>Sign in to your account</h1>}
             {msg && <h3 className="red">{msg}</h3>}
             {errorMessage && <h3 className="red">{errorMessage }</h3>}
-            <Form 
+            {!localStorage.getItem("loggedin") && <Form 
                 className="login-form" 
                 method="post"
                 replace //replace means that login component will be removed from history and replaced by the followin route
@@ -68,7 +77,7 @@ export default function Login() {
                 <button type="submit" disabled={navigation.state==="idle"?false:true}>
                     {navigation.state !== 'idle'?navigation.state + '...':'Log in'}
                 </button>
-            </Form>
+            </Form>}
         </div>
     )
 

@@ -565,7 +565,7 @@ a.host-van-detail-menu-active {
   border-top: none;
 }
 
-.login-form > button {
+.login-form > button, .logout-btn {
   background-color: #FF8C38;
   border: none;
   border-radius: 6px;
@@ -574,11 +574,13 @@ a.host-van-detail-menu-active {
   color: white;
   cursor: pointer;
   font-size: 18px;
+  width: 100%;
+  text-decoration: none;
 }
-.login-form > button:hover {
+.login-form > button:hover, .logout-btn:hover {
   text-decoration: underline;
 }
-.login-form > button:active {  
+.login-form > button:active, .logout-btn:active {  
   margin-top: 24px;
   margin-left: 2px;
 }
