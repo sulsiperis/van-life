@@ -587,7 +587,7 @@ a.host-van-detail-menu-active {
   margin-left: 2px;
   cursor: not-allowed;
   text-decoration: none;
-  color: #d4cfcf;
+  background: #837878;
 }
 .login-container .red {
   color: #E17654;

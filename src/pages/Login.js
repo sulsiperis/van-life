@@ -1,5 +1,13 @@
 import React from "react"
-import { useSearchParams, useLoaderData, useNavigate, Form, redirect, useActionData } from "react-router-dom"
+import { 
+    useSearchParams, //to get search string from url after ?
+    useLoaderData, //for retrieving messages from loader
+    useNavigate, //redirect in functional components
+    Form, //react router form
+    redirect, //for redirecting in non visual components
+    useActionData, //for retrievin errors
+    useNavigation //for retrieving the state of the route loader (work only w/ data loader router)
+} from "react-router-dom"
 import { loginUser } from "../api"
 
 //hard way to get message from authRequired using loader
@@ -37,6 +45,7 @@ export default function Login() {
 
     const navigate = useNavigate() //can be called just in a functional component
     const errorMessage = useActionData()
+    const navigation = useNavigation() //for retrieving state of the route i.e. "loading", "idle", "submitting"
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -53,10 +62,11 @@ export default function Login() {
             })
             .finally(() => setStatus("idle"))
     }
+    console.log(navigation.state)
     
     return (
         <div className="login-container">
-            {localStorage.getItem("loggedin") && <button onClick={() => {localStorage.clear()}}>Logout</button>}
+            {localStorage.getItem("loggedin") && <button onClick={() => {localStorage.clear(); navigate("/")}}>Logout</button>}
             <h1>Sign in to your account</h1>
             {msg && <h3 className="red">{msg}</h3>}
             {errorMessage && <h3 className="red">{errorMessage }</h3>}
@@ -75,8 +85,8 @@ export default function Login() {
                     type="password"
                     placeholder="Password"                    
                 />
-                <button type="submit" disabled={status==="idle"?false:true}>
-                    {status === 'submitting'?'Logging in...':'Log in'}
+                <button type="submit" disabled={navigation.state==="idle"?false:true}>
+                    {navigation.state !== 'idle'?navigation.state + '...':'Log in'}
                 </button>
             </Form>
         </div>
