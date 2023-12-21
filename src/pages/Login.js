@@ -40,29 +40,9 @@ export default function Login() {
     //hard way to get message from authRequired using loader
     const msg = useLoaderData()
     //--------
-    const [loginFormData, setLoginFormData] = React.useState({ email: "", password: "" })
-    const [status, setStatus] = React.useState("idle")
-
     const navigate = useNavigate() //can be called just in a functional component
     const errorMessage = useActionData()
     const navigation = useNavigation() //for retrieving state of the route i.e. "loading", "idle", "submitting"
-
-    function handleSubmit(e) {
-        e.preventDefault()
-
-        setStatus("submitting")
-        loginUser(loginFormData)
-            .then(data => {
-                console.log(data)
-                //setLoginFormData({ email: "", password: "" })
-                navigate('/host', { replace: true }) //replace: true means history replacing with previous route, not the login
-            })
-            .catch(err => {
-                              
-            })
-            .finally(() => setStatus("idle"))
-    }
-    console.log(navigation.state)
     
     return (
         <div className="login-container">
