@@ -1,5 +1,5 @@
 import React from "react"
-import { useSearchParams, useLoaderData, useNavigate, Form, redirect } from "react-router-dom"
+import { useSearchParams, useLoaderData, useNavigate, Form, redirect, useActionData } from "react-router-dom"
 import { loginUser } from "../api"
 
 //hard way to get message from authRequired using loader
@@ -12,11 +12,16 @@ export async function action(obj) {
     const formData = await obj.request.formData()
     const email = formData.get("email")
     const password = formData.get("password")
-    const data = await loginUser({email, password})
-    localStorage.setItem('loggedin', true)
+    try {
+        const data = await loginUser({email, password})
+        localStorage.setItem('loggedin', true)
+        return redirect("/host")
+
+    } catch(err) {
+        return err.message
+    }
     
     //console.log(data)
-    return redirect("/host")
 }
 
 export default function Login() {
@@ -29,13 +34,13 @@ export default function Login() {
     //--------
     const [loginFormData, setLoginFormData] = React.useState({ email: "", password: "" })
     const [status, setStatus] = React.useState("idle")
-    const [error, setError] = React.useState(null)
 
     const navigate = useNavigate() //can be called just in a functional component
+    const errorMessage = useActionData()
 
     function handleSubmit(e) {
         e.preventDefault()
-        setError(null)
+
         setStatus("submitting")
         loginUser(loginFormData)
             .then(data => {
@@ -44,7 +49,7 @@ export default function Login() {
                 navigate('/host', { replace: true }) //replace: true means history replacing with previous route, not the login
             })
             .catch(err => {
-                setError(err.message)                
+                              
             })
             .finally(() => setStatus("idle"))
     }
@@ -54,7 +59,7 @@ export default function Login() {
             {localStorage.getItem("loggedin") && <button onClick={() => {localStorage.clear()}}>Logout</button>}
             <h1>Sign in to your account</h1>
             {msg && <h3 className="red">{msg}</h3>}
-            {error && <h3 className="red">{error}</h3>}
+            {errorMessage && <h3 className="red">{errorMessage }</h3>}
             <Form 
                 className="login-form" 
                 method="post"
