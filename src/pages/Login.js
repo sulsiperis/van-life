@@ -16,6 +16,7 @@ export function loader({ request }) {
     return new URL(request.url).searchParams.get("message")
 }
 //---------
+
 export async function action(obj) {
     //obj has two objects: action and params. Params is an object from get method path
     const formData = await obj.request.formData()
