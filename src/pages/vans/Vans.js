@@ -63,7 +63,8 @@ function Vans() {
                 </div>
                 <div className='vans-list'>
                     {vans}            
-                </div>                
+                </div> 
+                
             </>
 
         )
@@ -73,11 +74,13 @@ function Vans() {
     if (error) return (<h3>Error: {error.message}</h3>) //return server error
     return (
         <div className='vans-wrapper'>
-            <h1>Explore our van options</h1>
-            <Await resolve={dataPromise.vans}>
-                {renderVanElements}
+            <React.Suspense fallback={<h2>Loading...</h2>}>
+                <h1>Explore our van options</h1>
+                <Await resolve={dataPromise.vans}>
+                    {renderVanElements}
 
-            </Await>
+                </Await>
+            </React.Suspense>
         </div>
     )
 }
