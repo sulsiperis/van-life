@@ -7,7 +7,7 @@ import VanDetail, { loader as vanDetailLoader } from './pages/vans/VanDetail';
 import Layout from './components/Layout';
 import Reviews from './pages/host/Reviews';
 import Income from './pages/host/Income';
-import Dashboard from './pages/host/Dashboard';
+import Dashboard, {loader as dashboardLoader} from './pages/host/Dashboard';
 import Host from './components/Host';
 import HostVans, { loader as hostVansLoader } from './pages/host/HostVans';
 import HostVan, { loader as hostVanDetailLoader } from './pages/host/HostVan';
@@ -35,7 +35,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     /> 
     <Route path='vans/:id' errorElement={<Error />} element={<VanDetail />} loader={vanDetailLoader} /> {/* ":" means that it's a variable not a predefinet string */}
     <Route path='host' element={<Host />} >
-      <Route index element={<Dashboard />} loader={async ({ request }) => await requireAuth(request)} /> {/* Index means that its a default route for the parent element */} 
+      <Route index element={<Dashboard />} loader={dashboardLoader} /> {/* Index means that its a default route for the parent element */} 
       <Route path='income' element={<Income />} loader={ async ({ request }) => await requireAuth(request) } />
       <Route path='reviews' element={<Reviews />} loader={ async ({ request }) => await requireAuth(request) } />
       <Route path='vans' errorElement={<Error />} element={<HostVans />} loader={hostVansLoader} />

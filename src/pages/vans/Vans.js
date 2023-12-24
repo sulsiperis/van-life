@@ -4,6 +4,7 @@ import { getVans } from '../../api';
 
 export function loader() {
     return (
+        
         defer({vans: getVans()})
     )
 }
