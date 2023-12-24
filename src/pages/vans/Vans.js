@@ -11,8 +11,6 @@ export function loader() {
 function Vans() {   
     const [searchParams, setSearchParams] = useSearchParams()
     const dataPromise = useLoaderData()
-
-    const [error, setError] = React.useState(null)
     
     const typeFilter = searchParams.get('type')
         
@@ -70,8 +68,6 @@ function Vans() {
         )
         
     }
-    
-    if (error) return (<h3>Error: {error.message}</h3>) //return server error
     return (
         <div className='vans-wrapper'>
             <React.Suspense fallback={<h2>Loading...</h2>}>

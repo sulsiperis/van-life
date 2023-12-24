@@ -30,16 +30,16 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route 
       path='vans' 
       element={<Vans />} 
-      loader={vansLoader} // loader delays element rendering until loader is finnished
       errorElement={<Error />} //error element for automatic error handling
+      loader={vansLoader} // loader delays element rendering until loader is finnished
     /> 
-    <Route path='vans/:id' element={<VanDetail />} loader={vanDetailLoader} /> {/* ":" means that it's a variable not a predefinet string */}
+    <Route path='vans/:id' errorElement={<Error />} element={<VanDetail />} loader={vanDetailLoader} /> {/* ":" means that it's a variable not a predefinet string */}
     <Route path='host' element={<Host />} >
       <Route index element={<Dashboard />} loader={async ({ request }) => await requireAuth(request)} /> {/* Index means that its a default route for the parent element */} 
       <Route path='income' element={<Income />} loader={ async ({ request }) => await requireAuth(request) } />
       <Route path='reviews' element={<Reviews />} loader={ async ({ request }) => await requireAuth(request) } />
-      <Route path='vans' element={<HostVans />} loader={hostVansLoader} />
-      <Route path='vans/:id' element={<HostVan />} loader={hostVanDetailLoader} >
+      <Route path='vans' errorElement={<Error />} element={<HostVans />} loader={hostVansLoader} />
+      <Route path='vans/:id' errorElement={<Error />} element={<HostVan />} loader={hostVanDetailLoader} >
         <Route index element={<HostVanInfo />} loader={async ({ request }) => await requireAuth(request) } />
         <Route path='photos' element={<HostVanPhotos />} loader={async ({ request }) => await requireAuth(request) } />
         <Route path='pricing' element={<HostVanPricing />} loader={async ({ request }) => await requireAuth(request) } />
