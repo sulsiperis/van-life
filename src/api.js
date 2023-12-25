@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getDocs, getFirestore, collection } from "firebase/firestore/lite";
+//import { getAnalytics } from "firebase/analytics";
+import { getDocs, getFirestore, collection, doc, getDoc, query, where } from "firebase/firestore/lite";
 
 const firebaseConfig = {
   apiKey: "AIzaSyByX7UtmOzfLnJn8KpmL_J3mHvqpFTowx0",
@@ -14,7 +14,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+//const analytics = getAnalytics(app);
 
 const db = getFirestore(app); //reference needed for delete note func
 const vansCollectionRef = collection(db, "vans")
@@ -22,38 +22,33 @@ const vansCollectionRef = collection(db, "vans")
 export async function getVans() {
     const querySnapshot = await getDocs(vansCollectionRef)
     const dataArr = querySnapshot.docs.map(doc => ({
-        ...doc.data()
+        ...doc.data(),
+        uid: doc.id
     }))
-   // console.log(dataArr[0].id)
     return dataArr
 }
-
-/* export async function getVans(id) {
-  const url = id ? `/api/vans/${id}` : "/api/vans"
-  const res = await fetch(url)
-  if (!res.ok) {
-      throw {
-          message: "Failed to fetch vans",
-          statusText: res.statusText,
-          status: res.status
-      }
-  }
-  const data = await res.json()
-  return data.vans
-} */
-
-export async function getHostVans(id) {
-  const url = id ? `/api/host/vans/${id}` : "/api/host/vans"
-  const res = await fetch(url)
-  if (!res.ok) {
-      throw {
-          message: "Failed to fetch vans",
-          statusText: res.statusText,
-          status: res.status
-      }
-  }
-  const data = await res.json()
-  return data.vans
+export async function getVan(id) {
+    const docRef = doc(db, "vans", id)
+    const vanSnapshot = await getDoc(docRef)    
+    return vanSnapshot.data()
+}
+export async function getHostVans() {
+    const q = query(vansCollectionRef, where("hostId", "==", 123))
+    const querySnapshot = await getDocs(q)
+    const dataArr = querySnapshot.docs.map(doc => ({
+        ...doc.data(),
+        uid: doc.id
+    }))
+    return dataArr
+}
+export async function getHostVan(id) {
+    const q = query(vansCollectionRef, where("hostId", "==", 123), where("id", "==", id))
+    const querySnapshot = await getDocs(q)
+    const dataArr = []
+    querySnapshot.forEach((doc) => {       
+        dataArr.push(doc.data());
+    });    
+    return dataArr[0]
 }
 export async function loginUser(creds) {
   const res = await fetch("/api/login",

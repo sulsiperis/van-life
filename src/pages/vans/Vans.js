@@ -41,9 +41,9 @@ function Vans() {
         const vans = filtered?.map(van => (  
                 <div key={van.id} className="van-tile">
                     {/* using state in link is a way to transfer info to the linked route without showing in url. In this case query strings */}
-                    <Link to={(van.id)} state={{search: `${searchParams.toString()}`, filter: `${typeFilter}` }}><img src={van.imageUrl} /></Link>
+                    <Link to={(van.uid)} state={{search: `${searchParams.toString()}`, filter: `${typeFilter}` }}><img src={van.imageUrl} /></Link>
                     <div className="van-info">
-                    <Link to={van.id}><h4>{van.name}</h4></Link>
+                    <Link to={van.uid}><h4>{van.name}</h4></Link>
                         <h4>€{van.price}<span>/day</span></h4>
                     </div>
                     <i className={`van-type ${van.type} selected`}>{van.type}</i>

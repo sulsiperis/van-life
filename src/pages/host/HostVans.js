@@ -13,7 +13,7 @@ function HostVans() {
     
     function renderHostVansElements(vans) {
         const vanList = vans.map(van => (
-            <Link key={van.id} to={van.id}>
+            <Link key={van.uid} to={van.id}>
                 <div className='host-van-item'>
                     <img src={van.imageUrl} />
                     <div>
